@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "client-install": "npm install --prefix college-timetables",
     "start": "node index.js",
     "dev": "nodemon indexs.js",
@@ -22,6 +22,7 @@
     "express": "^4.17.1",
     "express-formidable": "^1.2.0",
     "express-session": "^1.17.1",
+    "helmet": "^3.22.0",
     "mongoose": "^5.9.9",
     "validator": "^13.0.0"
   },

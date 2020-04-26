@@ -27,9 +27,14 @@ router.get('/api/classTimetable/:week&:group', async (req, res) => {
 router.get('/api/classTimetable/groups/:group', async (req, res) => {
   try {
     const group = await ClassesTimetable.find({ group: req.params.group });
+    if (group.length === 0) {
+      console.log('Группы с таким названием нет');
+    } else {
+      console.log(group);
+    }
     res.send(group);
   } catch (err) {
-    res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' });
+    res.status(500).json({ message: 'Группы с таким названием нет' });
   }
 });
 

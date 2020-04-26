@@ -2,13 +2,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-// const formidableMiddleware = require('express-formidable');
-// const AdminBro = require('admin-bro');
-// const AdminBroExpressjs = require('admin-bro-expressjs');
 const config = require('config');
-
-// // We have to tell AdminBro that we will manage mongoose resources with it
-// AdminBro.registerAdapter(require('admin-bro-mongoose'));
+const helmet = require('helmet');
 
 const classTimetable = require('./routes/classTimetable.router');
 const usersRouter = require('./routes/users.router');
@@ -20,7 +15,9 @@ const PORT = 5000; // config.get('port');
 // express server definition
 const app = express();
 app.use(bodyParser.json());
+app.use(helmet());
 
+// Router initialization
 app.use(classTimetable);
 app.use(usersRouter);
 app.use('/admin', adminRouter);
