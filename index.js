@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('config');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 
 const classTimetable = require('./routes/classTimetable.router');
 const usersRouter = require('./routes/users.router');
@@ -15,7 +15,7 @@ const PORT = 5000; // config.get('port');
 // express server definition
 const app = express();
 app.use(bodyParser.json());
-app.use(helmet());
+// app.use(helmet());
 
 // Router initialization
 app.use(classTimetable);
