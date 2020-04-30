@@ -4,7 +4,7 @@ const ClassesTimetable = new Schema({
   className: String,
   classNum: Number,
   classTime: String,
-  room: Number,
+  room: String,
   group: String,
   day: String,
   week: String,

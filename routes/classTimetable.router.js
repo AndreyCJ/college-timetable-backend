@@ -47,20 +47,4 @@ router.get('/api/classTimetable/groups/', async (req, res) => {
   }
 });
 
-// router.post('/api/classTimetable/post', async (req, res) => {
-//   try {
-//     const myClass = await new ClassesTimetable({
-//       className: 'Математика',
-//       classNum: 1,
-//       room: 310,
-//       group: 'П-43',
-//       day: 'Понедельник',
-//       week: 'Нечетная',
-//     }).save();
-//     res.send(myClass);
-//   } catch (err) {
-//     res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' });
-//   }
-// });
-
 module.exports = router;

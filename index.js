@@ -32,6 +32,7 @@ const start = async () => {
         useNewUrlParser: true,
         useCreateIndex: true,
         useUnifiedTopology: true,
+        useFindAndModify: false
       });
     app.listen(PORT, () => console.log(`Timetable-Backend listening on port ${PORT}!`));
   } catch (e) {
