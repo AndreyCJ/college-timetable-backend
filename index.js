@@ -6,7 +6,9 @@ const config = require('config');
 // const helmet = require('helmet');
 
 const classTimetable = require('./routes/classTimetable.router');
-const usersRouter = require('./routes/users.router');
+const callsTimetable = require('./routes/callsTimetable.router');
+const calls = require('./routes/calls.router');
+const weekRouter = require('./routes/week.router');
 const adminRouter = require('./routes/admin.router');
 
 const MONGO_URL = config.get('mongoUri');
@@ -19,10 +21,10 @@ app.use(bodyParser.json());
 
 // Router initialization
 app.use(classTimetable);
-app.use(usersRouter);
+app.use(callsTimetable);
+app.use(calls);
+app.use(weekRouter);
 app.use('/admin', adminRouter);
-
-app.get('/api', (req, res) => res.send('Hello World!'));
 
 // Running the server
 const start = async () => {

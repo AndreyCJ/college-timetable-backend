@@ -5,9 +5,16 @@ const mongoose = require('mongoose');
 
 AdminBro.registerAdapter(AdminBroMongoose);
 
+const menu = {
+  mongoose: { name: 'Mongoose Resources', icon: 'icon-mongodb' },
+};
+
 const adminBro = new AdminBro({
   databases: [mongoose],
   rootPath: '/admin',
+  branding: {
+    companyName: 'Расписание колледжа'
+  }
 });
 
 const PASS = 'jt!76ptip[^4;8~C}Zm@KmR06a59a4';
