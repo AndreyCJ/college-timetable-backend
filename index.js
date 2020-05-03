@@ -2,7 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const config = require('config');
+const key = require('./config/key');
 const path = require('path');
 const AdminBro = require('admin-bro');
 const cors = require('cors');
@@ -15,8 +15,8 @@ const weekRouter = require('./routes/week.router');
 const adminRouter = require('./routes/admin.router');
 const options = require('./admin/admin.options');
 
-const MONGO_URL = config.get('mongoUri');
-const PORT = process.env.PORT || config.get('port');
+let MONGO_URL = key.mongoUri;
+const PORT = process.env.PORT || 8080;
 
 // express server definition
 const app = express();
@@ -33,12 +33,12 @@ app.use(weekRouter);
 
 // Serve static assets if production
 if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static('../college-timetable-frontend/build'));
+// Set static folder
+  app.use(express.static('../build'));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../college-timetable-frontend', 'build', 'index.html'));
-  })
+    res.sendFile(path.resolve(__dirname, '../', 'build', 'index.html'));
+  });
 }
 
 // Running the server
@@ -49,11 +49,11 @@ const start = async () => {
         useNewUrlParser: true,
         useCreateIndex: true,
         useUnifiedTopology: true,
-        useFindAndModify: false
+        useFindAndModify: false,
       });
-      const admin = new AdminBro(options);
-      const router = adminRouter(admin);
-      app.use(admin.options.rootPath, router);
+    const admin = new AdminBro(options);
+    const router = adminRouter(admin);
+    app.use(admin.options.rootPath, router);
     app.listen(PORT, () => console.log(`Timetable-Backend listening on port ${PORT}!`));
   } catch (e) {
     console.log('Server Error', e.message);
